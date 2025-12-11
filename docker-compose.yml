@@ -30,7 +30,9 @@ services:
     environment:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/cloud_db
       SECRET_KEY: dev-secret-key-change-in-production
-      CORS_ORIGINS: http://localhost:5173,http://localhost:3000
+      # CORS_ORIGINS doit être un JSON array pour pydantic_settings
+      # Autorise localhost et tous les hosts (ex: EC2)
+      CORS_ORIGINS: '["http://localhost:5173","http://localhost:3000","*"]'
     ports:
       - "8000:8000"
     volumes:

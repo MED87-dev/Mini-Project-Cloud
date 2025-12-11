@@ -7,6 +7,11 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true, // Permet l'accès depuis d'autres machines
+    // Autoriser tous les hôtes AWS EC2 (compute.amazonaws.com)
+    allowedHosts: [
+      '.compute.amazonaws.com', // Autorise tous les sous-domaines *.compute.amazonaws.com
+      'ec2-56-228-16-227.eu-north-1.compute.amazonaws.com', // Hôte spécifique
+    ],
     proxy: {
       '/api': {
         target: 'http://localhost:8000',
